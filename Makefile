@@ -1,7 +1,6 @@
 all:
 	mkdir -p ~/.config
 	make base
-	make sway
 	make git
 	make git-change-remote
 
@@ -12,15 +11,6 @@ base-config:
 	ln -sf $(PWD)/.tmux.conf ~/.tmux.conf
 	ln -snf $(PWD)/.config/helix ~/.config/
 	ln -snf $(PWD)/.config/htop ~/.config/
-
-sway: sway-config
-
-sway-config:
-	ln -sf $(PWD)/.config/electron-flags.conf ~/.config/
-	ln -snf $(PWD)/.config/sway  ~/.config/
-	ln -snf $(PWD)/.config/foot  ~/.config/
-	ln -snf $(PWD)/.config/dunst ~/.config/
-	ln -snf $(PWD)/Backgrounds ~/Backgrounds
 
 flatpak: flatpak-add flatpak-install
 
@@ -37,7 +27,7 @@ arch-packages:
 	sudo pacman -S --needed libffi libyaml openssl zlib imagemagick postgresql-libs mariadb-libs
 
 git:
-	git config --global core.editor "hx"
+	git config --global core.editor "helix"
 	git config --global user.name "Danil Antoshin"
 	git config --global user.email antoshindanil@ya.ru
 	git config --global pull.rebase true
@@ -51,13 +41,9 @@ asdf-install:
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
 
 asdf-setup:
-	asdf plugin-add golang
 	asdf plugin-add ruby
-	asdf plugin-add nodejs
 
 asdf-inst:
-	asdf install nodejs 16.20.2
-	asdf install golang 1.21.0
 	asdf install ruby 3.0.1
 	asdf install ruby 3.1.2
 
