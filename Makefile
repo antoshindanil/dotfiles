@@ -41,10 +41,10 @@ asdf: asdf-install asdf-setup
 
 asdf-install:
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
-
-asdf-setup:
 	asdf plugin-add ruby
 	asdf plugin-add nodejs
+
+asdf-setup:
 	asdf install nodejs 16.20.2
 	asdf install ruby 3.0.1
 	asdf install ruby 3.1.2
