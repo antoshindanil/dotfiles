@@ -38,7 +38,8 @@ packages: base-packages ruby-packages dev-packages lsp-packages
 base-packages:
 	sudo pacman -S --needed base-devel htop git tmux curl man zip unzip \
 		jq keychain ripgrep neofetch rsync bash-completion fzf wget \
-		lf lazygit fd sad git-delta go nodejs npm yarn httpie bat docker
+		lf lazygit fd sad git-delta go nodejs npm yarn httpie bat docker \
+	  openssh
 
 ruby-packages:
 	sudo pacman -S --needed base-devel rust libffi libyaml openssl zlib
