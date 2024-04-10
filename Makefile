@@ -3,10 +3,12 @@ all:
 	make base
 	make git
 	make nvim
+	make packages
+	make locale
+	make docker
+	make asdf
 
-base: base-config
-
-base-config:
+base:
 	ln -sf $(PWD)/.bashrc ~/.bashrc
 	ln -sf $(PWD)/.gitconfig ~/.gitconfig
 	ln -sf $(PWD)/.tmux.conf ~/.tmux.conf
@@ -21,16 +23,41 @@ nvim:
 	rm -rf ~/.config/nvim || exit 0
 	ln -snf $(PWD)/config/nvim ~/.config/nvim
 
-packages:
-	sudo apt install git htop tmux curl man zip unzip keychain rsync bash-completion wget
+locale:
+	sudo /bin/bash -c "echo 'ru_RU.UTF-8 UTF-8' > /etc/locale.gen"
+	sudo /bin/bash -c "echo 'LANG=ru_RU.UTF-8' > /etc/locale.conf"
+	sudo locale-gen
 
-brew:
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	(echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/danil/.bashrc
+docker:
+	sudo systemctl start docker.socket
+	sudo systemctl enable docker.socket
+	sudo usermod -aG docker $(USER)
 
-brew-packages:
-	brew install lf lazygit fd sad git-delta jq ripgrep fzf httpie bat rbenv go nvm
+packages: base-packages ruby-packages dev-packages lsp-packages
 
-brew-dev-packages:
-	brew install imagemagick postgresql mariadb shared-mime-info webp
+base-packages:
+	sudo pacman -S --needed base-devel htop git tmux curl man zip unzip \
+		jq keychain ripgrep neofetch rsync bash-completion fzf wget \
+		lf lazygit fd sad git-delta go nodejs npm yarn httpie bat docker
+
+ruby-packages:
+	sudo pacman -S --needed base-devel rust libffi libyaml openssl zlib
+
+dev-packages:
+	sudo pacman -S --needed imagemagick postgresql-libs mariadb-libs shared-mime-info libwebp
+
+lsp-packages:
+	sudo pacman -S --needed yaml-language-server bash-language-server typescript-language-server \
+		gopls marksman ansible-language-server taplo-cli vscode-json-languageserver \
+		vscode-html-languageserver vscode-css-languageserver vue-language-server
+	# sudo npm i -g "awk-language-server@>=0.5.2" sql-language-server
+	go install github.com/go-delve/delve/cmd/dlv@latest
+	go install golang.org/x/tools/cmd/goimports@latest
+
+yay:
+	git clone https://aur.archlinux.org/yay.git ~/yay && cd ~/yay && makepkg -si && rm -rf ~/yay
+
+asdf:
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
+
 
