@@ -24,5 +24,3 @@ alias lg='lazygit'
 
 . $HOME/dotfiles/.bash_path
 
-[[ -e /usr/share/fzf/key-bindings.bash ]] && . /usr/share/fzf/key-bindings.bash
-[[ -e /usr/share/fzf/completion.bash ]] &&   . /usr/share/fzf/completion.bash

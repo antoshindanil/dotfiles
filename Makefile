@@ -1,8 +1,8 @@
 all:
 	mkdir -p ~/.config
 	make base
-	make packages
 	make git
+	make nvim
 
 base: base-config
 
@@ -10,49 +10,27 @@ base-config:
 	ln -sf $(PWD)/.bashrc ~/.bashrc
 	ln -sf $(PWD)/.gitconfig ~/.gitconfig
 	ln -sf $(PWD)/.tmux.conf ~/.tmux.conf
-	ln -snf $(PWD)/config/kak ~/.config/
 	ln -snf $(PWD)/config/htop ~/.config/
-	ln -snf $(PWD)/config/helix ~/.config/
 
-git-change-remote:
+git:
 	git remote set-url origin git@github.com:antoshindanil/dotfiles.git
 
-nvim-install:
+nvim:
 	rm -rf nvim/plugin || exit 0
 	rm -rf ~/.local/share/nvim || exit 0
 	rm -rf ~/.config/nvim || exit 0
 	ln -snf $(PWD)/config/nvim ~/.config/nvim
 
 packages:
-	sudo pacman -S --needed base-devel htop git tmux curl man zip unzip \
-		jq keychain ripgrep neofetch rsync bash-completion fzf wget \
-		lf lazygit fd sad git-delta go nodejs npm yarn httpie bat
+	sudo apt install git htop tmux curl man zip unzip keychain rsync bash-completion wget
 
-ruby-packages:
-	sudo pacman -S --needed base-devel rust libffi libyaml openssl zlib
+brew:
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	(echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/danil/.bashrc
 
-dev-packages:
-	sudo pacman -S --needed imagemagick postgresql-libs mariadb-libs shared-mime-info libwebp
+brew-packages:
+	brew install lf lazygit fd sad git-delta jq ripgrep fzf httpie bat rbenv go nvm
 
-yay:
-	git clone https://aur.archlinux.org/yay.git ~/yay && cd ~/yay && makepkg -si && rm -rf ~/yay
+brew-dev-packages:
+	brew install imagemagick postgresql mariadb shared-mime-info webp
 
-asdf: asdf-install asdf-setup
-
-asdf-install:
-	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
-	asdf plugin-add ruby
-	asdf plugin-add nodejs
-
-asdf-setup:
-	asdf install nodejs 16.20.2
-	asdf install ruby 3.0.1
-	asdf install ruby 3.1.2
-
-lsp-install:
-	sudo pacman -S --needed yaml-language-server bash-language-server typescript-language-server \
-		gopls marksman ansible-language-server taplo-cli vscode-json-languageserver \
-		vscode-html-languageserver vscode-css-languageserver vue-language-server
-	# sudo npm i -g "awk-language-server@>=0.5.2" sql-language-server
-	go install github.com/go-delve/delve/cmd/dlv@latest
-	go install golang.org/x/tools/cmd/goimports@latest

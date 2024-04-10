@@ -8,9 +8,6 @@ export PATH=$PATH:$GOPATH/bin/
 export PATH=$PATH:$HOME/.cargo/bin/
 export PATH=$PATH:$HOME/.local/bin/
 export PATH=$PATH:$HOME/dotfiles/scripts/
-export PATH=$PATH:/var/lib/flatpak/exports/bin
-export HELIX_RUNTIME=$HOME/.config/helix/runtime
-
 
 PROMPT_COMMAND='PS1_CMD1=$(git branch 2>/dev/null | grep '"'"'*'"'"' | colrm 1 2)'; PS1='\[\e[92m\]\t\[\e[0m\] \[\e[96m\]\h\[\e[0m\]@\[\e[95m\]\u\[\e[0m\] \[\e[94m\]\w\[\e[0m\] \[\e[91m\]${PS1_CMD1}\[\e[0m\] '
 
@@ -18,5 +15,16 @@ PROMPT_COMMAND='PS1_CMD1=$(git branch 2>/dev/null | grep '"'"'*'"'"' | colrm 1 2
 
 export FZF_DEFAULT_OPTS="--height 60% --layout=reverse --border --preview 'bat -n --color=always --theme ansi {}'"
 
-[[ -d $HOME/.asdf/ ]] && . "$HOME/.asdf/asdf.sh"
-[[ -d $HOME/.asdf/ ]] && . "$HOME/.asdf/completions/asdf.bash"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+export NVM_DIR="$HOME/.nvm"
+
+[ -s "/home/linuxbrew/.linuxbrew/opt/rbenv/completions/rbenv.bash" ] && \. "/home/linuxbrew/.linuxbrew/opt/rbenv/completions/rbenv.bash"
+[ -s "/home/linuxbrew/.linuxbrew/opt/rbenv/completions/rbenv.bash" ] && eval "$(rbenv init - bash)"
+
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"
+
+[ -e "/home/linuxbrew/.linuxbrew/opt/fzf/shell/key-bindings.bash" ] && \. "/home/linuxbrew/.linuxbrew/opt/fzf/shell/key-bindings.bash"
+[ -e "/home/linuxbrew/.linuxbrew/opt/fzf/shell/completion.bash" ] && \. "/home/linuxbrew/.linuxbrew/opt/fzf/shell/completion.bash"
+
