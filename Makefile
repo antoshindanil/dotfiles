@@ -7,11 +7,13 @@ all:
 	make locale
 	make docker
 	make asdf
+	make yay
 
 base:
 	ln -sf $(PWD)/.bashrc ~/.bashrc
 	ln -sf $(PWD)/.gitconfig ~/.gitconfig
 	ln -sf $(PWD)/.tmux.conf ~/.tmux.conf
+	ln -snf $(PWD)/config/helix ~/.config/
 	ln -snf $(PWD)/config/htop ~/.config/
 
 git:
@@ -24,8 +26,8 @@ nvim:
 	ln -snf $(PWD)/config/nvim ~/.config/nvim
 
 locale:
-	sudo /bin/bash -c "echo 'ru_RU.UTF-8 UTF-8' > /etc/locale.gen"
-	sudo /bin/bash -c "echo 'LANG=ru_RU.UTF-8' > /etc/locale.conf"
+	echo 'ru_RU.UTF-8 UTF-8' | sudo tee -a /etc/locale.gen
+	echo 'LANG=ru_RU.UTF-8' | sudo tee -a /etc/locale.conf
 	sudo locale-gen
 
 docker:
