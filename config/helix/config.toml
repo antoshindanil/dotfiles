@@ -1,4 +1,4 @@
-theme = "term16_dark"
+theme = "ayu_evolve"
 
 [editor]
 bufferline              = "multiple"

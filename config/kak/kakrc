@@ -9,7 +9,6 @@ add-highlighter global/ wrap -word -indent
 
 set-option global grepcmd 'rg --column --smart-case --sort path'
 
-
 define-command -hidden open_buffer_picker %{
   prompt buffer: -menu -buffer-completion %{
     buffer %val{text}
@@ -35,8 +34,8 @@ define-command -hidden open_rg_picker %{
 #   printf %s "$kak_main_reg_dquote" | wl-copy > /dev/null 2>&1 &
 # }}
 
-map -docstring "copy line to system clipboard" global user y "<a-|>wl-copy -o<ret>"
-map -docstring "paste from system clipboard"   global user p "<a-!>wl-paste<ret>"
+map -docstring "copy line to system clipboard" global user y "<a-|>clip.exe<ret>"
+map -docstring "paste from system clipboard"   global user p "<a-!>powershell.exe Get-Clipboard | tr -d '\r'<ret>"
 
 map global normal <esc> ";,"
 
@@ -47,7 +46,7 @@ map -docstring "goto previous buffer" global user , ": bp<ret>"
 map -docstring "goto next buffer"     global user . ": bn<ret>"
 map -docstring "save current buffer"  global user s ": w<ret>"
 
-map -docstring "open file picker"  global user s ": w<ret>"
+# map -docstring "open file picker"  global user s ": w<ret>"
 
 map -docstring "insert newline above" global user [ "O<esc>j"
 map -docstring "insert newline below" global user ] "o<esc>k"
@@ -57,3 +56,20 @@ map -docstring "open LazyGit"   global user g ":tmux-terminal-window lazygit<ret
 map -docstring "open file picker"   global user f ":open_file_picker<ret>"
 map -docstring "open rg picker"     global user r ":open_rg_picker<ret>"
 map -docstring "open buffer picker" global user b ":open_buffer_picker<ret>"
+
+
+# LSP
+eval %sh{kak-lsp --kakoune -s $kak_session}  # Not needed if you load it with plug.kak.
+hook global WinSetOption filetype=(ruby|go|javascript|typescript) %{
+    lsp-enable-window
+}
+
+map global user l %{:enter-user-mode lsp<ret>} -docstring "LSP mode"
+map global insert <tab> '<a-;>:try lsp-snippets-select-next-placeholders catch %{ execute-keys -with-hooks <lt>tab> }<ret>' -docstring 'Select next snippet placeholder'
+map global object a '<a-semicolon>lsp-object<ret>' -docstring 'LSP any symbol'
+map global object <a-a> '<a-semicolon>lsp-object<ret>' -docstring 'LSP any symbol'
+map global object f '<a-semicolon>lsp-object Function Method<ret>' -docstring 'LSP function or method'
+map global object t '<a-semicolon>lsp-object Class Interface Struct<ret>' -docstring 'LSP class interface or struct'
+map global object d '<a-semicolon>lsp-diagnostic-object --include-warnings<ret>' -docstring 'LSP errors and warnings'
+map global object D '<a-semicolon>lsp-diagnostic-object<ret>' -docstring 'LSP errors'
+Usage

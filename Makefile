@@ -15,6 +15,7 @@ base:
 	ln -sf $(PWD)/.tmux.conf ~/.tmux.conf
 	ln -snf $(PWD)/config/helix ~/.config/
 	ln -snf $(PWD)/config/htop ~/.config/
+	ln -snf $(PWD)/config/kak ~/.config/
 
 git:
 	git remote set-url origin git@github.com:antoshindanil/dotfiles.git
