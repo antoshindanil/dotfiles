@@ -32,10 +32,13 @@ vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.colorcolumn = { 120 }
+vim.opt.cmdheight = 0
 
 -- PLUGINS
 -- require("lazy").setup()
 require("lazy").setup("plugins")
+
+vim.cmd("colorscheme github_light")
 
 -- KEYMAPS
 vim.keymap.set('n', '<Esc>', ':noh<Return><Esc>')

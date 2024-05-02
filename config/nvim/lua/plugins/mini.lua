@@ -12,6 +12,9 @@ return {
       require('mini.pairs').setup()
       require('mini.surround').setup()
       require('mini.splitjoin').setup()
+      require('mini.diff').setup()
+      require('mini.tabline').setup()
+      require('mini.statusline').setup()
 
       require('mini.trailspace').setup()
       local MiniTrailspace = require('mini.trailspace')
