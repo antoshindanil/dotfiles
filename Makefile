@@ -36,7 +36,7 @@ docker:
 	sudo systemctl enable docker.socket
 	sudo usermod -aG docker $(USER)
 
-packages: base-packages ruby-packages dev-packages lsp-packages
+packages: base-packages ruby-packages dev-packages
 
 base-packages:
 	sudo pacman -S --needed base-devel htop git tmux curl man zip unzip \
@@ -54,7 +54,7 @@ lsp-packages:
 	sudo pacman -S --needed yaml-language-server bash-language-server typescript-language-server \
 		gopls marksman ansible-language-server taplo-cli vscode-json-languageserver \
 		vscode-html-languageserver vscode-css-languageserver vue-language-server
-	# sudo npm i -g "awk-language-server@>=0.5.2" sql-language-server
+	npm i -g "awk-language-server@>=0.5.2" sql-language-server
 	go install github.com/go-delve/delve/cmd/dlv@latest
 	go install golang.org/x/tools/cmd/goimports@latest
 
