@@ -42,5 +42,12 @@ vim.cmd("colorscheme github_light")
 
 -- KEYMAPS
 vim.keymap.set('n', '<Esc>', ':noh<Return><Esc>')
-vim.keymap.set('n', '<C-g>', ':!topen-git<Return><Esc>')
+vim.keymap.set('n', '<C-g>', ':silent !topen-git<Return>')
 vim.keymap.set('n', '<A-q>', ':bd<CR>')
+vim.keymap.set('n', '<C-n>', function()
+    if vim.bo.filetype == 'netrw' then
+        vim.cmd 'bwipeout'
+    else
+        vim.cmd 'Vexplore %:p:h'
+    end
+end, { silent = true })
