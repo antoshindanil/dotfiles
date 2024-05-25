@@ -13,6 +13,6 @@ inherits = "github_light"
 "ui.window" = { fg = "border.default" }
 "ui.help" = { fg = "fg.default" }
 
-# "ui.virtual.whitespace" = "scale.gray.2"
-"ui.virtual" = { fg = "fg.muted" }
+# # "ui.virtual.whitespace" = "scale.gray.2"
+# "ui.virtual" = { fg = "fg.muted" }
 "ui.virtual.ruler" = { bg = "scale.gray.2" }
