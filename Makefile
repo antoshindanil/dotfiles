@@ -24,7 +24,7 @@ copr-packages:
 base-packages:
 	sudo dnf install -y  htop git tmux curl man zip unzip \
 		jq keychain ripgrep neofetch rsync bash-completion fzf wget \
-		lf lazygit fd-find sad git-delta go httpie bat helix
+		lf lazygit fd-find sad git-delta go httpie bat helix perl-FindBin
 
 ruby-packages:
 	sudo dnf install -y autoconf gcc rust patch make bzip2 openssl-devel libyaml-devel \
