@@ -1,0 +1,69 @@
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(deflayer qwerty
+  @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  @cap a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           @spc            ralt rmet rctl
+)
+
+(deflayer dvorak
+  @grl 1    2    3    4    5    6    7    8    9    0    [    ]    bspc
+  tab  '    ,    .    p    y    f    g    c    r    l    /    =    \
+  @cap a    o    e    u    i    d    h    t    n    s    -    ret
+  lsft ;    q    j    k    x    b    m    w    v    z    rsft
+  lctl lmet lalt           @spc            ralt rmet rctl
+)
+
+(deflayer nav
+  _    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  C-b  @t0  @t1  @t2  @t3  @t4  left down up   rght @tv  @th  _
+  _    _    @tx  @tc  _    _    _    home pgdn pgup end  _
+  _    _    _              _              _    _    _
+)
+
+(deflayer layers
+  _    @qwr @dvk lrld _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _
+)
+
+(defalias
+  grl (tap-hold 200 200 grv (layer-toggle layers))
+
+  dvk (layer-switch dvorak)
+  qwr (layer-switch qwerty)
+
+  cap (tap-hold 200 200 caps lctl)
+
+  spc (tap-hold 200 200 spc (layer-toggle nav))
+)
+
+(defalias
+  0 0 
+  1 1
+  2 2
+  3 3
+  4 4
+
+  tc (macro C-b c)
+  tx (macro C-b x y)
+  tv (macro C-b S-5)
+  th (macro C-b S-')
+  t0 (macro C-b @0)
+  t1 (macro C-b @1)
+  t2 (macro C-b @2)
+  t3 (macro C-b @3)
+  t4 (macro C-b @4)
+)
+
