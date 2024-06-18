@@ -10,7 +10,7 @@ base:
 	ln -sf $(PWD)/.tmux.conf ~/.tmux.conf
 	ln -snf $(PWD)/config/helix ~/.config/
 	ln -snf $(PWD)/config/htop ~/.config/
-	ln -snf $(PWD)/config/kak ~/.config/
+	ln -snf $(PWD)/config/nvim ~/.config/
 
 git:
 	git remote set-url origin git@github.com:antoshindanil/dotfiles.git
@@ -23,7 +23,7 @@ copr-packages:
 
 system-packages:
 	sudo dnf install gnome-extensions-app gnome-shell-extension-appindicator \
-	perk-FindBin
+	perk-FindBin wl-clipboard
 
 base-packages:
 	sudo dnf install -y  htop git tmux curl man zip unzip \
@@ -39,11 +39,11 @@ dev-packages:
 
 lsp-packages:
 	sudo dnf install -y yaml-language-server bash-language-server typescript-language-server \
-		gopls marksman ansible-language-server taplo-cli vscode-json-languageserver \
-		vscode-html-languageserver vscode-css-languageserver vue-language-server
+		marksman ansible-language-server taplo-cli vscode-json-languageserver
 	npm i -g "awk-language-server@>=0.5.2" sql-language-server
 	go install github.com/go-delve/delve/cmd/dlv@latest
 	go install golang.org/x/tools/cmd/goimports@latest
+	go install golang.org/x/tools/gopls@latest
 
 asdf:
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
