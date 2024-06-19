@@ -20,7 +20,5 @@ alias rdm='bin/rails db:migrate'
 alias rdr='bin/rails db:rollback'
 alias rdrp='bin/rails db:rollback:primary'
 
-alias lg='lazygit'
-
 . $HOME/dotfiles/.bash_path
 
