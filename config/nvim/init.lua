@@ -35,7 +35,6 @@ vim.opt.colorcolumn = { 120 }
 vim.opt.cmdheight = 0
 
 -- PLUGINS
--- require("lazy").setup()
 require("lazy").setup("plugins")
 
 vim.cmd("colorscheme github_light")

@@ -27,7 +27,7 @@ mode.insert = "Вставка"
 mode.select = "Визуальный"
 
 [editor.whitespace.render]
-newline = "all" 
+newline = "all"
 
 [editor.whitespace.characters]
 newline = "·"

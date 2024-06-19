@@ -11,6 +11,7 @@ base:
 	ln -snf $(PWD)/config/helix ~/.config/
 	ln -snf $(PWD)/config/htop ~/.config/
 	ln -snf $(PWD)/config/nvim ~/.config/
+	ln -snf $(PWD)/config/kitty ~/.config/
 
 git:
 	git remote set-url origin git@github.com:antoshindanil/dotfiles.git
