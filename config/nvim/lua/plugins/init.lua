@@ -1,6 +1,7 @@
 return {
   { "slim-template/vim-slim", },
   { "nvim-tree/nvim-web-devicons", lazy = true },
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   {
     'projekt0n/github-nvim-theme',
     lazy = false,

@@ -19,6 +19,13 @@ return {
 
       require('mini.basics').setup({ mappings = { windows = true } })
 
+      -- require('mini.indentscope').setup({
+      --   draw = {
+      --     delay = 0,
+      --   },
+      --   symbol = "│"
+      -- })
+
       require('mini.trailspace').setup()
       local MiniTrailspace = require('mini.trailspace')
       vim.keymap.set('n', '<Leader>ds', function() MiniTrailspace.trim() end, {})
