@@ -11,11 +11,16 @@ return {
     local builtin = require('telescope.builtin')
     local ext = require('telescope').extensions
 
+    local open_with_trouble = require("trouble.sources.telescope").open
     local project_actions = require('telescope._extensions.project.actions')
     require 'telescope'.setup {
       defaults = {
         layout_config = {
           horizontal = { width = 0.95 }
+        },
+        mappings = {
+          i = { ["<c-t>"] = open_with_trouble },
+          n = { ["<c-t>"] = open_with_trouble },
         },
       },
       pickers = {
@@ -45,21 +50,21 @@ return {
     require("telescope").load_extension("picker_list")
     require("telescope").load_extension("ui-select")
 
-    vim.keymap.set('n', '<Leader><Leader>', builtin.find_files,            {})
-    vim.keymap.set('n', '<Leader>fc',       builtin.commands,              {})
-    vim.keymap.set('n', '<Leader>fs',       builtin.live_grep,             {})
-    vim.keymap.set('x', '<Leader>fs',       builtin.grep_string,           {})
-    vim.keymap.set('n', '<Leader>fds',      builtin.lsp_document_symbols,  {})
-    vim.keymap.set('n', '<Leader>fws',      builtin.lsp_workspace_symbols, {})
-    vim.keymap.set('n', '<Leader>fg',       builtin.git_commits,           {})
-    vim.keymap.set('n', '<Leader>fgb',      builtin.git_bcommits,          {})
-    vim.keymap.set('x', '<Leader>fgb',      builtin.git_bcommits_range,    {})
-    vim.keymap.set('n', '<Leader>b',        builtin.buffers,               {})
-    vim.keymap.set('n', '<Leader>fq',       builtin.quickfix,              {})
-    vim.keymap.set('n', '<Leader>fp',       ext.project.project,           {})
-    vim.keymap.set('n', '<Leader>frm',      ext.rails.models,              {})
-    vim.keymap.set('n', '<Leader>frc',      ext.rails.controllers,         {})
-    vim.keymap.set('n', '<Leader>frv',      ext.rails.views,               {})
-    vim.keymap.set('n', '<Leader>frs',      ext.rails.specs,               {})
+    vim.keymap.set('n', '<Leader><Leader>', builtin.find_files, {})
+    vim.keymap.set('n', '<Leader>fc', builtin.commands, {})
+    vim.keymap.set('n', '<Leader>fs', builtin.live_grep, {})
+    vim.keymap.set('x', '<Leader>fs', builtin.grep_string, {})
+    vim.keymap.set('n', '<Leader>fds', builtin.lsp_document_symbols, {})
+    vim.keymap.set('n', '<Leader>fws', builtin.lsp_workspace_symbols, {})
+    vim.keymap.set('n', '<Leader>fg', builtin.git_commits, {})
+    vim.keymap.set('n', '<Leader>fgb', builtin.git_bcommits, {})
+    vim.keymap.set('x', '<Leader>fgb', builtin.git_bcommits_range, {})
+    vim.keymap.set('n', '<Leader>b', builtin.buffers, {})
+    vim.keymap.set('n', '<Leader>fq', builtin.quickfix, {})
+    vim.keymap.set('n', '<Leader>fp', ext.project.project, {})
+    vim.keymap.set('n', '<Leader>frm', ext.rails.models, {})
+    vim.keymap.set('n', '<Leader>frc', ext.rails.controllers, {})
+    vim.keymap.set('n', '<Leader>frv', ext.rails.views, {})
+    vim.keymap.set('n', '<Leader>fu', "<cmd>Telescope undo<cr>")
   end
 }

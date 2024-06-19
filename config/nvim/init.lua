@@ -41,5 +41,5 @@ vim.cmd("colorscheme github_light")
 
 -- KEYMAPS
 vim.keymap.set('n', '<Esc>', ':noh<Return><Esc>')
-vim.keymap.set('n', '<C-g>', ':!topen-git<Return><Esc>')
+vim.keymap.set('n', '<C-t>', ':!topen-bash<Return><Esc>')
 vim.keymap.set('n', '<A-q>', ':bd<CR>')
