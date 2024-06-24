@@ -22,3 +22,4 @@ alias rdrp='bin/rails db:rollback:primary'
 
 . $HOME/dotfiles/.bash_path
 
+. "$HOME/.cargo/env"

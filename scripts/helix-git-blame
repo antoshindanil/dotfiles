@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Select Original pane 
+# Select Original pane
 ORIGINAL_PANE=$(tmux select-pane -U)
 
 # Capture the output of the original pane
 PANE_OUTPUT=$(tmux capture-pane -p) #-t $ORIGINAL_PANE)
 
-# Back to the bottom pane 
+# Back to the bottom pane
 tmux select-pane -D
 
 # Extract file and line information
