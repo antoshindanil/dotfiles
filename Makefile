@@ -15,37 +15,26 @@ base:
 git:
 	git remote set-url origin git@github.com:antoshindanil/dotfiles.git
 
-nvim:
-	rm -rf nvim/plugin || exit 0
-	rm -rf ~/.local/share/nvim || exit 0
-	rm -rf ~/.config/nvim || exit 0
-	ln -snf $(PWD)/config/nvim ~/.config/nvim
-
 brew:
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+font:
+	brew tap homebrew/cask-fonts
+	brew install --cask font-iosevka-nerd-font
 
 packages: base-packages ruby-packages dev-packages
 
 base-packages:
 	brew install htop tmux zip unzip jq ripgrep rsync fzf wget asdf \
-		lf lazygit fd sad git-delta go nodejs npm yarn httpie bat docker \
-		zsh-completion
+		lf lazygit fd sad git-delta httpie bat zsh-completion
 
 ruby-packages:
 	brew install openssl@3 readline libyaml gmp
 
 dev-packages:
-	brew install --cask docker
+	# brew install --cask docker
 	brew install --cask dbeaver-community
 	brew install imagemagick postgresql mariadb shared-mime-info
-
-lsp-packages:
-	sudo pacman -S --needed yaml-language-server bash-language-server typescript-language-server \
-		gopls marksman ansible-language-server taplo-cli vscode-json-languageserver \
-		vscode-html-languageserver vscode-css-languageserver vue-language-server
-	npm i -g "awk-language-server@>=0.5.2" sql-language-server
-	go install github.com/go-delve/delve/cmd/dlv@latest
-	go install golang.org/x/tools/cmd/goimports@latest
 
 asdf:
 	asdf plugin-add ruby
