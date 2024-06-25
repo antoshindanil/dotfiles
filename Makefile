@@ -18,10 +18,6 @@ git:
 brew:
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-font:
-	brew tap homebrew/cask-fonts
-	brew install --cask font-iosevka-nerd-font
-
 packages: base-packages ruby-packages dev-packages
 
 base-packages:
@@ -33,6 +29,7 @@ ruby-packages:
 
 dev-packages:
 	# brew install --cask docker
+	brew install --cask font-iosevka-term-nerd-font
 	brew install --cask dbeaver-community
 	brew install imagemagick postgresql mariadb shared-mime-info
 

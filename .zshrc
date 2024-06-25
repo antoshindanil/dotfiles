@@ -6,9 +6,6 @@ plugins=(git rails asdf sudo)
 
 source $ZSH/oh-my-zsh.sh
 
-# ASDF
-. /usr/local/opt/asdf/libexec/asdf.sh
-
 # FZF
 eval "$(fzf --zsh)"
 
