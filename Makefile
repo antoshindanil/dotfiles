@@ -9,6 +9,7 @@ base:
 	ln -sf $(PWD)/.zshrc ~/.zshrc
 	ln -sf $(PWD)/.gitconfig ~/.gitconfig
 	ln -sf $(PWD)/.tmux.conf ~/.tmux.conf
+	ln -snf $(PWD)/config/nvim ~/.config/
 	ln -snf $(PWD)/config/helix ~/.config/
 	ln -snf $(PWD)/config/htop ~/.config/
 
@@ -22,7 +23,8 @@ packages: base-packages ruby-packages dev-packages
 
 base-packages:
 	brew install htop tmux zip unzip jq ripgrep rsync fzf wget asdf \
-		lf lazygit fd sad git-delta httpie bat zsh-completion
+		lf lazygit fd sad git-delta httpie bat zsh-completion pkg-config \
+		neovim helix
 
 ruby-packages:
 	brew install openssl@3 readline libyaml gmp

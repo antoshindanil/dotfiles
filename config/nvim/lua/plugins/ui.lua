@@ -14,12 +14,6 @@ return {
     opts = {},
   },
   {
-    "akinsho/bufferline.nvim",
-    version = "*",
-    opts = {},
-    dependencies = "nvim-tree/nvim-web-devicons",
-  },
-  {
     "folke/noice.nvim",
     opts = {
       lsp = {
@@ -28,7 +22,7 @@ return {
       }
     },
     event = "VeryLazy",
-    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
+    dependencies = { "MunifTanjim/nui.nvim" }
   },
   {
     "projekt0n/github-nvim-theme",
@@ -41,16 +35,26 @@ return {
     end
   },
   {
+    "f-person/auto-dark-mode.nvim",
+    opts = {
+      update_interval = 1000,
+      set_dark_mode = function()
+        vim.opt.background = "dark"
+        vim.cmd("colorscheme github_dark_default")
+      end,
+      set_light_mode = function()
+        vim.opt.background = "light"
+        vim.cmd("colorscheme github_light")
+      end,
+    },
+  },
+  {
     "folke/which-key.nvim",
     event = "VeryLazy",
     init = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
+    opts = {}
   },
 }
