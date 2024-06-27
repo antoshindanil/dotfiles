@@ -9,7 +9,7 @@ defaults.tcp_port = 5829
 
 
 [presets.'Default Preset']
-kanata_executable = '~/.cargo/bin/kanata'
+kanata_executable = '~/dotfiles/kanata/kanata'
 kanata_config     = '~/dotfiles/kanata/kanata.kbd'
 autorun = true
 

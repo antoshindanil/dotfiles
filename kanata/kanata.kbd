@@ -44,13 +44,14 @@
   dvk (layer-switch dvorak)
   qwr (layer-switch qwerty)
 
-  cap (tap-hold 200 200 caps lctl)
+  ;; cap (tap-hold 200 200 caps lctl)
+  cap lctl
 
   spc (tap-hold 200 200 spc (layer-toggle nav))
 )
 
 (defalias
-  0 0 
+  0 0
   1 1
   2 2
   3 3

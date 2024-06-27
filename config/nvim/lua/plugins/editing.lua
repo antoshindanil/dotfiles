@@ -24,14 +24,6 @@ return {
     opts = { useDefaultKeymaps = true },
   },
   {
-    "Wansmer/treesj",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      require("treesj").setup()
-      vim.keymap.set("n", "<leader>m", require("treesj").toggle, { desc = "toggle split treesitter object" })
-    end,
-  },
-  {
     "mbbill/undotree",
     config = function()
       vim.keymap.set("n", "<Leader>u", vim.cmd.UndotreeToggle, { desc = "Open UndoTree" })
