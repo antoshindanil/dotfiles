@@ -1,7 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = { "nvim-treesitter/nvim-treesitter-context", "RRethy/nvim-treesitter-endwise" },
+    dependencies = { "RRethy/nvim-treesitter-endwise", "Wansmer/treesj" },
     build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup({
@@ -11,7 +11,8 @@ return {
         endwise = { enable = true }
       })
 
-      require "treesitter-context".setup()
+      require("treesj").setup()
+      vim.keymap.set("n", "<leader>m", require("treesj").toggle, { desc = "toggle split treesitter object" })
     end
   }
 }

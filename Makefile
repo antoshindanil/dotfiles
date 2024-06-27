@@ -12,6 +12,8 @@ base:
 	ln -snf $(PWD)/config/nvim ~/.config/
 	ln -snf $(PWD)/config/helix ~/.config/
 	ln -snf $(PWD)/config/htop ~/.config/
+	ln -snf $(PWD)/config/kitty ~/.config/
+	ln -snf $(PWD)/config/alacritty ~/.config/
 
 git:
 	git remote set-url origin git@github.com:antoshindanil/dotfiles.git
@@ -24,7 +26,7 @@ packages: base-packages ruby-packages dev-packages
 base-packages:
 	brew install htop tmux zip unzip jq ripgrep rsync fzf wget asdf \
 		lf lazygit fd sad git-delta httpie bat zsh-completion pkg-config \
-		neovim helix
+		neovim helix iproute2mac
 
 ruby-packages:
 	brew install openssl@3 readline libyaml gmp
