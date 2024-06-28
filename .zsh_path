@@ -9,3 +9,6 @@ export PATH=$PATH:$HOME/.cargo/bin/
 export PATH=$PATH:$HOME/.local/bin/
 export PATH=$PATH:$HOME/dotfiles/scripts/
 export FZF_DEFAULT_OPTS="--height 60% --layout=reverse --border --preview 'bat -n --color=always --theme ansi {}'"
+
+[[ -e /opt/homebrew/bin/keychain ]] && eval `keychain --agents ssh --eval --quiet ~/.ssh/id_ed25519`
+

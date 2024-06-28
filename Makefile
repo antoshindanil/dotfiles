@@ -26,7 +26,7 @@ packages: base-packages ruby-packages dev-packages
 base-packages:
 	brew install htop tmux zip unzip jq ripgrep rsync fzf wget asdf \
 		lf lazygit fd sad git-delta httpie bat zsh-completion pkg-config \
-		neovim helix iproute2mac
+		neovim helix iproute2mac keychain
 
 ruby-packages:
 	brew install openssl@3 readline libyaml gmp
